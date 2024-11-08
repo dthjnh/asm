@@ -18,7 +18,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button btnSubmitAnswer;
     private ArrayList<Flashcard> flashcardList;
     private int currentIndex = 0;
-    private int correctAnswers = 0;
+    private int correctAnswersCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,20 +47,21 @@ public class QuizActivity extends AppCompatActivity {
             // Check if the answer is correct
             if (userAnswer.equalsIgnoreCase(currentFlashcard.getAnswer())) {
                 Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
-                correctAnswers++;
+                correctAnswersCount++;
             } else {
-                Toast.makeText(QuizActivity.this, "Try Again!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(QuizActivity.this, "Incorrect! Correct answer: " + currentFlashcard.getAnswer(), Toast.LENGTH_SHORT).show();
             }
 
             // Move to the next question
             currentIndex++;
             if (currentIndex >= flashcardList.size()) {
-                showResult();
+                // All questions answered, show the result
+                showResults();
+            } else {
+                displayQuestion(currentIndex);
             }
-            displayQuestion(currentIndex);
         });
     }
-
 
     // Method to display the question
     private void displayQuestion(int index) {
@@ -69,11 +70,13 @@ public class QuizActivity extends AppCompatActivity {
         enterAnswerInput.setText(""); // Clear the input field
     }
 
-    private void showResult() {
+    // Method to show the results and navigate back to HomeActivity
+    private void showResults() {
+        Toast.makeText(QuizActivity.this, "You answered " + correctAnswersCount + " out of " + flashcardList.size() + " questions correctly!", Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(QuizActivity.this, HomeActivity.class);
-        startActivity(intent);
-        Toast.makeText(QuizActivity.this,"You answered " + correctAnswers + " out of " + flashcardList.size() + " flashcards",Toast.LENGTH_SHORT).show();
-        finish(); // Close the QuizActivity when the result is shown
+        // Navigate back to HomeActivity
+        Intent homeIntent = new Intent(QuizActivity.this, HomeActivity.class);
+        startActivity(homeIntent);
+        finish(); // Close the QuizActivity
     }
 }
