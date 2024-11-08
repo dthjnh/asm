@@ -1,43 +1,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_image"
+    android:gravity="center"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <EditText
         android:id="@+id/getTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title" />
+        android:background="@drawable/edittext_background"
+        android:hint="Title"
+        android:padding="10dp"
+        android:textColor="@android:color/black" />
 
     <EditText
         android:id="@+id/getQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Question" />
+        android:background="@drawable/edittext_background"
+        android:hint="Question"
+        android:padding="10dp"
+        android:textColor="@android:color/black" />
 
     <EditText
         android:id="@+id/getAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Answer" />
+        android:background="@drawable/edittext_background"
+        android:hint="Answer"
+        android:padding="10dp"
+        android:textColor="@android:color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/btnSave"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save" />
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/teal_700"
+            android:padding="10dp"
+            android:text="Save"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btnReview"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Review Flashcards" />
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/teal_700"
+            android:padding="10dp"
+            android:text="Review Flashcards"
+            android:textColor="@android:color/white" />
     </LinearLayout>
-
 </LinearLayout>
