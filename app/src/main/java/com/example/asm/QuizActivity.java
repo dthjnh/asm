@@ -2,12 +2,16 @@ package com.example.asm;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -44,7 +48,6 @@ public class QuizActivity extends AppCompatActivity {
             String userAnswer = enterAnswerInput.getText().toString();
             Flashcard currentFlashcard = flashcardList.get(currentIndex);
 
-            // Check if the answer is correct
             if (userAnswer.equalsIgnoreCase(currentFlashcard.getAnswer())) {
                 Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
                 correctAnswersCount++;
@@ -52,7 +55,7 @@ public class QuizActivity extends AppCompatActivity {
                 Toast.makeText(QuizActivity.this, "Incorrect! Correct answer: " + currentFlashcard.getAnswer(), Toast.LENGTH_SHORT).show();
             }
 
-            // Move to the next question
+            //Move to the next question
             currentIndex++;
             if (currentIndex >= flashcardList.size()) {
                 // All questions answered, show the result
@@ -60,6 +63,7 @@ public class QuizActivity extends AppCompatActivity {
             } else {
                 displayQuestion(currentIndex);
             }
+
         });
     }
 
@@ -70,13 +74,45 @@ public class QuizActivity extends AppCompatActivity {
         enterAnswerInput.setText(""); // Clear the input field
     }
 
+    // Method to show the feedback dialog
+    private void showFeedbackDialog() {
+        // Inflate the custom layout
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_feedback, null);
+
+        // Create an AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(dialogView);
+        builder.setCancelable(false); // Make the dialog non-cancelable
+
+        RadioGroup radioGroupFeedback = dialogView.findViewById(R.id.radioGroupFeedback);
+        Button btnSubmitFeedback = dialogView.findViewById(R.id.btnSubmitFeedback);
+
+        // Show the dialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        // Handle the feedback submission
+        btnSubmitFeedback.setOnClickListener(view -> {
+            int selectedId = radioGroupFeedback.getCheckedRadioButtonId();
+            if (selectedId != -1) {
+                RadioButton selectedRating = dialogView.findViewById(selectedId);
+                String rating = selectedRating.getText().toString();
+                Toast.makeText(QuizActivity.this, "Thank you for your feedback! Rating: " + rating, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(QuizActivity.this, "Please select a rating", Toast.LENGTH_SHORT).show();
+            }
+            // Navigate back to HomeActivity
+            Intent homeIntent = new Intent(QuizActivity.this, HomeActivity.class);
+            startActivity(homeIntent);
+            finish(); // Close the QuizActivity
+            });
+    }
+
     // Method to show the results and navigate back to HomeActivity
     private void showResults() {
         Toast.makeText(QuizActivity.this, "You answered " + correctAnswersCount + " out of " + flashcardList.size() + " questions correctly!", Toast.LENGTH_LONG).show();
 
-        // Navigate back to HomeActivity
-        Intent homeIntent = new Intent(QuizActivity.this, HomeActivity.class);
-        startActivity(homeIntent);
-        finish(); // Close the QuizActivity
+        showFeedbackDialog();
     }
 }

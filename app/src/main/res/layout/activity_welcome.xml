@@ -5,7 +5,7 @@
 
     <!-- Welcome Title -->
     <TextView
-        android:id="@+id/tvWelcomeTitle"
+        android:id="@+id/textViewWelcomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -21,13 +21,13 @@
 
     <!-- Subtitle -->
     <TextView
-        android:id="@+id/tvSubtitle"
+        android:id="@+id/textViewSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Learn, Create, and Review Flashcards Easily"
         android:textSize="16sp"
         android:textColor="@android:color/white"
-        android:layout_below="@id/tvWelcomeTitle"
+        android:layout_below="@id/textViewWelcomeTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:shadowColor="#000000"
@@ -39,7 +39,7 @@
         android:id="@+id/imgDecorative"
         android:layout_width="318dp"
         android:layout_height="271dp"
-        android:layout_below="@id/tvSubtitle"
+        android:layout_below="@id/textViewSubtitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:contentDescription="Decorative Icon"

@@ -10,10 +10,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ReviewFlashcardActivity extends AppCompatActivity {
     private TextView textViewFlashcardContent;
-    private Button btnBack, btnNextFlashcard, btnQuizz;
+    private Button btnBack, btnNextFlashcard, btnQuizz, btnShuffle;
     private ArrayList<Flashcard> flashcardList;
     private int currentIndex = 0;
 
@@ -27,6 +28,7 @@ public class ReviewFlashcardActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         btnNextFlashcard = findViewById(R.id.btnNextFlashcard);
         btnQuizz = findViewById(R.id.btnQuizz);
+        btnShuffle = findViewById(R.id.btnShuffle);
 
         // Get the flashcard list from the Intent
         Intent intent = getIntent();
@@ -66,6 +68,17 @@ public class ReviewFlashcardActivity extends AppCompatActivity {
                 Intent quizIntent = new Intent(ReviewFlashcardActivity.this, QuizActivity.class);
                 quizIntent.putParcelableArrayListExtra("flashcardList", flashcardList);
                 startActivity(quizIntent);
+            }
+        });
+
+        btnShuffle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(flashcardList!=null && !flashcardList.isEmpty()) {
+                    Collections.shuffle(flashcardList);
+                    currentIndex = 0; // Reset the current index
+                    textViewFlashcardContent.setText("Flashcards shuffled!");
+                }  displayFlashcard(currentIndex);
             }
         });
     }

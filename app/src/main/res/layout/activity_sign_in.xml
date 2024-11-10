@@ -6,6 +6,18 @@
     android:background="@drawable/background_image"
     android:gravity="center">
 
+    <TextView
+        android:id="@+id/textViewSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
+
+
     <EditText
         android:id="@+id/enterUsername"
         android:layout_width="match_parent"
