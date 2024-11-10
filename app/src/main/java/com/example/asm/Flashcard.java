@@ -4,18 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Flashcard implements Parcelable {
-    private String title;
     private String question;
     private String answer;
 
-    public Flashcard(String title, String question, String answer) {
-        this.title = title;
+    public Flashcard(String question, String answer) {
         this.question = question;
         this.answer = answer;
     }
 
     protected Flashcard(Parcel in) {
-        title = in.readString();
         question = in.readString();
         answer = in.readString();
     }
@@ -32,10 +29,6 @@ public class Flashcard implements Parcelable {
         }
     };
 
-    public String getTitle() {
-        return title;
-    }
-
     public String getQuestion() {
         return question;
     }
@@ -51,7 +44,6 @@ public class Flashcard implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int flags) {
-        parcel.writeString(title);
         parcel.writeString(question);
         parcel.writeString(answer);
     }

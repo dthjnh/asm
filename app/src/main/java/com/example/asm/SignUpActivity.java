@@ -33,7 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String username = enterUsername.getText().toString();
                 String password = enterPassword.getText().toString();
 
-                if (!username.isEmpty() &&!password.isEmpty()) {
+                if (!username.isEmpty() && !password.isEmpty()) {
                     User user = new User(username, password);
                     Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                     intent.putExtra("user",user);

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class CreateFlashcardActivity extends AppCompatActivity {
-    private EditText getTitle, getQuestion, getAnswer;
+    private EditText getQuestion, getAnswer;
     private Button btnSave, btnReview;
     private static ArrayList<Flashcard> flashcardList = new ArrayList<>();
 
@@ -23,7 +23,6 @@ public class CreateFlashcardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_flashcard);
 
-        getTitle = findViewById(R.id.getTitle);
         getQuestion = findViewById(R.id.getQuestion);
         getAnswer = findViewById(R.id.getAnswer);
         btnSave = findViewById(R.id.btnSave);
@@ -32,19 +31,17 @@ public class CreateFlashcardActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String title = getTitle.getText().toString();
                 String question = getQuestion.getText().toString();
                 String answer = getAnswer.getText().toString();
 
-                if (!title.isEmpty() && !question.isEmpty() && !answer.isEmpty()) {
+                if (!question.isEmpty() && !answer.isEmpty()) {
                     // Create a new Flashcard and add it to the list
-                    Flashcard flashcard = new Flashcard(title, question, answer);
+                    Flashcard flashcard = new Flashcard(question, answer);
                     flashcardList.add(flashcard);
 
                     Toast.makeText(CreateFlashcardActivity.this, "Flashcard Saved!", Toast.LENGTH_SHORT).show();
 
                     // Clear the input fields for the next flashcard
-                    getTitle.setText("");
                     getQuestion.setText("");
                     getAnswer.setText("");
                 } else {

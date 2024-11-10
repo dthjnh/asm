@@ -102,10 +102,9 @@ public class QuizActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(QuizActivity.this, "Please select a rating", Toast.LENGTH_SHORT).show();
             }
-            // Navigate back to HomeActivity
             Intent homeIntent = new Intent(QuizActivity.this, HomeActivity.class);
             startActivity(homeIntent);
-            finish(); // Close the QuizActivity
+            finish();
             });
     }
 

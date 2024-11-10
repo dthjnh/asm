@@ -86,7 +86,7 @@ public class ReviewFlashcardActivity extends AppCompatActivity {
     // Method to display the flashcard content
     private void displayFlashcard(int index) {
         Flashcard flashcard = flashcardList.get(index);
-        String flashcardContent = "Title: " + flashcard.getTitle() + "\nQuestion: " + flashcard.getQuestion() + "\nAnswer: " + flashcard.getAnswer();
+        String flashcardContent = "Question: " + flashcard.getQuestion() + "\nAnswer: " + flashcard.getAnswer();
         textViewFlashcardContent.setText(flashcardContent);
     }
 }
