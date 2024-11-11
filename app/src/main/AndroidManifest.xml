@@ -32,7 +32,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Set HomeActivity as the launcher activity -->
+        </activity>
         <activity
             android:name=".HomeActivity"
             android:exported="true">
@@ -41,12 +41,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Other activities without intent filters for launching -->
+        </activity>
         <activity
             android:name=".QuizActivity"
             android:exported="true" />
         <activity
-            android:name=".ReviewFlashcardActivity"
+            android:name=".CheckFlashcardActivity"
             android:exported="true" />
         <activity
             android:name=".CreateFlashcardActivity"

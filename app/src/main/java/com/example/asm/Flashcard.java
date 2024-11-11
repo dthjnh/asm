@@ -17,7 +17,8 @@ public class Flashcard implements Parcelable {
         answer = in.readString();
     }
 
-    public static final Creator<Flashcard> CREATOR = new Creator<Flashcard>() {
+    public static final Creator<Flashcard>
+            CREATOR = new Creator<Flashcard>() {
         @Override
         public Flashcard createFromParcel(Parcel in) {
             return new Flashcard(in);

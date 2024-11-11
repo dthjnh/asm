@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ReviewFlashcardActivity extends AppCompatActivity {
+public class CheckFlashcardActivity extends AppCompatActivity {
     private TextView textViewFlashcardContent;
     private Button btnBack, btnNextFlashcard, btnQuizz, btnShuffle;
     private ArrayList<Flashcard> flashcardList;
@@ -22,7 +22,7 @@ public class ReviewFlashcardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_review_flashcard);
+        setContentView(R.layout.activity_check_flashcard);
 
         textViewFlashcardContent = findViewById(R.id.textViewFlashcardContent);
         btnBack = findViewById(R.id.btnBack);
@@ -57,7 +57,7 @@ public class ReviewFlashcardActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReviewFlashcardActivity.this, HomeActivity.class);
+                Intent intent = new Intent(CheckFlashcardActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -65,7 +65,7 @@ public class ReviewFlashcardActivity extends AppCompatActivity {
         btnQuizz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent quizIntent = new Intent(ReviewFlashcardActivity.this, QuizActivity.class);
+                Intent quizIntent = new Intent(CheckFlashcardActivity.this, QuizActivity.class);
                 quizIntent.putParcelableArrayListExtra("flashcardList", flashcardList);
                 startActivity(quizIntent);
             }
@@ -76,7 +76,7 @@ public class ReviewFlashcardActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(flashcardList!=null && !flashcardList.isEmpty()) {
                     Collections.shuffle(flashcardList);
-                    currentIndex = 0; // Reset the current index
+//                    currentIndex = 0; // Reset the current index
                     textViewFlashcardContent.setText("Flashcards shuffled!");
                 }  displayFlashcard(currentIndex);
             }
@@ -89,4 +89,5 @@ public class ReviewFlashcardActivity extends AppCompatActivity {
         String flashcardContent = "Question: " + flashcard.getQuestion() + "\nAnswer: " + flashcard.getAnswer();
         textViewFlashcardContent.setText(flashcardContent);
     }
+
 }

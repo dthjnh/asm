@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class CreateFlashcardActivity extends AppCompatActivity {
     private EditText getQuestion, getAnswer;
     private Button btnSave, btnReview;
-    private static ArrayList<Flashcard> flashcardList = new ArrayList<>();
+    private static ArrayList<Flashcard> cardList = new ArrayList<>();
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -37,13 +37,14 @@ public class CreateFlashcardActivity extends AppCompatActivity {
                 if (!question.isEmpty() && !answer.isEmpty()) {
                     // Create a new Flashcard and add it to the list
                     Flashcard flashcard = new Flashcard(question, answer);
-                    flashcardList.add(flashcard);
+                    cardList.add(flashcard);
 
                     Toast.makeText(CreateFlashcardActivity.this, "Flashcard Saved!", Toast.LENGTH_SHORT).show();
 
                     // Clear the input fields for the next flashcard
                     getQuestion.setText("");
                     getAnswer.setText("");
+
                 } else {
                     Toast.makeText(CreateFlashcardActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 }
@@ -54,8 +55,8 @@ public class CreateFlashcardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Send the flashcard list to ReviewFlashcardActivity
-                Intent intent = new Intent(CreateFlashcardActivity.this, ReviewFlashcardActivity.class);
-                intent.putParcelableArrayListExtra("flashcardList", flashcardList);
+                Intent intent = new Intent(CreateFlashcardActivity.this, CheckFlashcardActivity.class);
+                intent.putParcelableArrayListExtra("flashcardList", cardList);
                 startActivity(intent);
             }
         });

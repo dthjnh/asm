@@ -6,13 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private Button btnCreateFLashcard, btnReviewFlashcard, btnQuiz, btnLogOut;
@@ -37,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
         btnReviewFlashcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, ReviewFlashcardActivity.class);
+                Intent intent = new Intent(HomeActivity.this, CheckFlashcardActivity.class);
                 startActivity(intent);
             }
         });
