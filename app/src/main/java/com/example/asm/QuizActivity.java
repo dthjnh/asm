@@ -20,7 +20,7 @@ public class QuizActivity extends AppCompatActivity {
     private TextView textViewQuestion;
     private EditText enterAnswerInput;
     private Button btnSubmitAnswer;
-    private ArrayList<Flashcard> flashcardList;
+    private ArrayList<Flashcard> cardList;
     private int currentIndex = 0;
     private int correctAnswersCount = 0;
 
@@ -35,10 +35,10 @@ public class QuizActivity extends AppCompatActivity {
 
         // Get the flashcard list from the Intent
         Intent intent = getIntent();
-        flashcardList = intent.getParcelableArrayListExtra("flashcardList");
+        cardList = intent.getParcelableArrayListExtra("flashcardList");
 
         // Display the first question
-        if (flashcardList != null && !flashcardList.isEmpty()) {
+        if (cardList != null && !cardList.isEmpty()) {
             displayQuestion(currentIndex);
         } else {
             textViewQuestion.setText("No questions available.");
@@ -46,7 +46,7 @@ public class QuizActivity extends AppCompatActivity {
 
         btnSubmitAnswer.setOnClickListener(view -> {
             String userAnswer = enterAnswerInput.getText().toString();
-            Flashcard currentFlashcard = flashcardList.get(currentIndex);
+            Flashcard currentFlashcard = cardList.get(currentIndex);
 
             if (userAnswer.equalsIgnoreCase(currentFlashcard.getAnswer())) {
                 Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
@@ -57,7 +57,7 @@ public class QuizActivity extends AppCompatActivity {
 
             //Move to the next question
             currentIndex++;
-            if (currentIndex >= flashcardList.size()) {
+            if (currentIndex >= cardList.size()) {
                 // All questions answered, show the result
                 showResults();
             } else {
@@ -69,12 +69,11 @@ public class QuizActivity extends AppCompatActivity {
 
     // Method to display the question
     private void displayQuestion(int index) {
-        Flashcard flashcard = flashcardList.get(index);
+        Flashcard flashcard = cardList.get(index);
         textViewQuestion.setText(flashcard.getQuestion());
         enterAnswerInput.setText(""); // Clear the input field
     }
 
-    // Method to show the feedback dialog
     private void showFeedbackDialog() {
         // Inflate the custom layout
         LayoutInflater inflater = getLayoutInflater();
@@ -108,9 +107,8 @@ public class QuizActivity extends AppCompatActivity {
             });
     }
 
-    // Method to show the results and navigate back to HomeActivity
     private void showResults() {
-        Toast.makeText(QuizActivity.this, "You answered " + correctAnswersCount + " out of " + flashcardList.size() + " questions correctly!", Toast.LENGTH_LONG).show();
+        Toast.makeText(QuizActivity.this, "You answered " + correctAnswersCount + " out of " + cardList.size() + " questions correctly!", Toast.LENGTH_LONG).show();
 
         showFeedbackDialog();
     }
