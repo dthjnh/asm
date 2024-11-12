@@ -33,16 +33,25 @@ public class SignUpActivity extends AppCompatActivity {
                 String username = enterUsername.getText().toString();
                 String password = enterPassword.getText().toString();
 
-                if (!username.isEmpty() && !password.isEmpty()) {
+                if (username.isEmpty() && password.isEmpty()) {
+                    Toast.makeText(SignUpActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (username.length() < 6) {
+                    Toast.makeText(SignUpActivity.this, "Username must be accomplish", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (password.length() < 6 || !password.contains("!")) {
+                    Toast.makeText(SignUpActivity.this, "Password must be at least 6 characters and contain 1 special character ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                     User user = new User(username, password);
                     Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                     intent.putExtra("user",user);
                     startActivity(intent);
 
                     Toast.makeText(SignUpActivity.this,"Sign up successfully!",Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(SignUpActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
