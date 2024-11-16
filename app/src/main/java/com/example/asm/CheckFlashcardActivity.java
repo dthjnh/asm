@@ -30,11 +30,9 @@ public class CheckFlashcardActivity extends AppCompatActivity {
         btnQuizz = findViewById(R.id.btnQuizz);
         btnShuffle = findViewById(R.id.btnShuffle);
 
-        // Get the flashcard list from the Intent
         Intent intent = getIntent();
         cardList = intent.getParcelableArrayListExtra("flashcardList");
 
-        // Display the first flashcard
         if (cardList != null && !cardList.isEmpty()) {
             displayFlashcard(currentIndex);
         } else {
@@ -76,14 +74,13 @@ public class CheckFlashcardActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(cardList!=null && !cardList.isEmpty()) {
                     Collections.shuffle(cardList);
-//                    currentIndex = 0; // Reset the current index
+                    currentIndex = 0;
                     textViewFlashcardContent.setText("Flashcards shuffled!");
                 }  displayFlashcard(currentIndex);
             }
         });
     }
 
-    // Method to display the flashcard content
     private void displayFlashcard(int index) {
         Flashcard flashcard = cardList.get(index);
         String flashcardContent = "Question: " + flashcard.getQuestion() + "\nAnswer: " + flashcard.getAnswer();

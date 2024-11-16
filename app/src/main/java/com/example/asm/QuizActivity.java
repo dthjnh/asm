@@ -33,11 +33,9 @@ public class QuizActivity extends AppCompatActivity {
         enterAnswerInput = findViewById(R.id.enterAnswerInput);
         btnSubmitAnswer = findViewById(R.id.btnSubmitAnswer);
 
-        // Get the flashcard list from the Intent
         Intent intent = getIntent();
         cardList = intent.getParcelableArrayListExtra("flashcardList");
 
-        // Display the first question
         if (cardList != null && !cardList.isEmpty()) {
             displayQuestion(currentIndex);
         } else {
@@ -55,10 +53,8 @@ public class QuizActivity extends AppCompatActivity {
                 Toast.makeText(QuizActivity.this, "Incorrect! Correct answer: " + currentFlashcard.getAnswer(), Toast.LENGTH_SHORT).show();
             }
 
-            //Move to the next question
             currentIndex++;
             if (currentIndex >= cardList.size()) {
-                // All questions answered, show the result
                 showResults();
             } else {
                 displayQuestion(currentIndex);
@@ -67,31 +63,26 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
-    // Method to display the question
     private void displayQuestion(int index) {
         Flashcard flashcard = cardList.get(index);
         textViewQuestion.setText(flashcard.getQuestion());
-        enterAnswerInput.setText(""); // Clear the input field
+        enterAnswerInput.setText("");
     }
 
     private void showFeedbackDialog() {
-        // Inflate the custom layout
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_feedback, null);
 
-        // Create an AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(dialogView);
-        builder.setCancelable(false); // Make the dialog non-cancelable
+        builder.setCancelable(false);
 
         RadioGroup radioGroupFeedback = dialogView.findViewById(R.id.radioGroupFeedback);
         Button btnSubmitFeedback = dialogView.findViewById(R.id.btnSubmitFeedback);
 
-        // Show the dialog
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
-        // Handle the feedback submission
         btnSubmitFeedback.setOnClickListener(view -> {
             int selectedId = radioGroupFeedback.getCheckedRadioButtonId();
             if (selectedId != -1) {

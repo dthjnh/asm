@@ -35,13 +35,11 @@ public class CreateFlashcardActivity extends AppCompatActivity {
                 String answer = getAnswer.getText().toString();
 
                 if (!question.isEmpty() && !answer.isEmpty()) {
-                    // Create a new Flashcard and add it to the list
                     Flashcard flashcard = new Flashcard(question, answer);
                     cardList.add(flashcard);
 
                     Toast.makeText(CreateFlashcardActivity.this, "Flashcard Saved!", Toast.LENGTH_SHORT).show();
 
-                    // Clear the input fields for the next flashcard
                     getQuestion.setText("");
                     getAnswer.setText("");
 
@@ -54,7 +52,6 @@ public class CreateFlashcardActivity extends AppCompatActivity {
         btnReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Send the flashcard list to ReviewFlashcardActivity
                 Intent intent = new Intent(CreateFlashcardActivity.this, CheckFlashcardActivity.class);
                 intent.putParcelableArrayListExtra("flashcardList", cardList);
                 startActivity(intent);
