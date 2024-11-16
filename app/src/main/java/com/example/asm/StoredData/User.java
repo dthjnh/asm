@@ -1,4 +1,4 @@
-package com.example.asm;
+package com.example.asm.StoredData;
 
 import java.io.Serializable;
 

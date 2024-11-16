@@ -1,4 +1,4 @@
-package com.example.asm;
+package com.example.asm.Login;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -8,11 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.asm.R;
+import com.example.asm.StoredData.User;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText enterUsername, enterPassword;
@@ -41,7 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Username must be accomplish", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (password.length() < 6 || !password.contains("!")) {
+                if (password.length() < 6 || !password.matches(".*[!@#$%^&*].*")) {
                     Toast.makeText(SignUpActivity.this, "Password must be at least 6 characters and contain 1 special character ", Toast.LENGTH_SHORT).show();
                     return;
                 }

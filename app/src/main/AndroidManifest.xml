@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Asm"
         tools:targetApi="31">
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".Homepage.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignInActivity"
+            android:name=".Login.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".Login.SignUpActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".Homepage.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,13 +43,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".QuizActivity"
+            android:name=".Quizz.QuizActivity"
             android:exported="true" />
         <activity
-            android:name=".CheckFlashcardActivity"
+            android:name=".CreateandCheckFlashcard.CheckFlashcardActivity"
             android:exported="true" />
         <activity
-            android:name=".CreateFlashcardActivity"
+            android:name=".CreateandCheckFlashcard.CreateFlashcardActivity"
             android:exported="false" />
     </application>
 

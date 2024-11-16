@@ -1,4 +1,4 @@
-package com.example.asm;
+package com.example.asm.Quizz;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.asm.Homepage.HomeActivity;
+import com.example.asm.R;
+import com.example.asm.StoredData.Flashcard;
 
 import java.util.ArrayList;
 
